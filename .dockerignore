@@ -1,0 +1,6 @@
+# Ignore all files by default - our Dockerfile produces our build environment,
+# which only depends on 'make tools'
+*
+
+# Exceptions to the "ignore all" rule, above
+!Makefile

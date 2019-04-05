@@ -1,4 +1,6 @@
-gotty
 bindata
 builds
+gotty
+js/dist/gotty-bundle.js
 js/node_modules/*
+server/asset.go
