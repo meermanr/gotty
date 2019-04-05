@@ -4,10 +4,10 @@ VERSION = 2.0.0-alpha.3
 BUILD_OPTIONS = -ldflags "-X main.Version=$(VERSION) -X main.CommitID=$(GIT_COMMIT)"
 
 gotty: main.go server/*.go webtty/*.go backend/*.go Makefile
-	godep go build ${BUILD_OPTIONS}
+	CGO_ENABLED=0 godep go build ${BUILD_OPTIONS}
 
 .PHONY: asset
-asset: bindata/static/js/gotty-bundle.js bindata/static/index.html bindata/static/favicon.png bindata/static/css/index.css bindata/static/css/xterm.css bindata/static/css/xterm_customize.css
+asset: bindata/static/js/gotty-bundle.js bindata/static/index.html bindata/static/favicon.png bindata/static/Inconsolata-g.woff2 bindata/static/css/index.css bindata/static/css/xterm.css bindata/static/css/xterm_customize.css
 	go-bindata -prefix bindata -pkg server -ignore=\\.gitkeep -o server/asset.go bindata/...
 	gofmt -w server/asset.go
 
@@ -25,6 +25,9 @@ bindata/static/index.html: bindata/static resources/index.html
 
 bindata/static/favicon.png: bindata/static resources/favicon.png
 	cp resources/favicon.png bindata/static/favicon.png
+
+bindata/static/Inconsolata-g.woff2: bindata/static resources/Inconsolata-g.woff2
+	cp resources/Inconsolata-g.woff2 bindata/static/Inconsolata-g.woff2
 
 bindata/static/js: bindata/static
 	mkdir -p bindata/static/js

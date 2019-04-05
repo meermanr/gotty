@@ -1,5 +1,11 @@
+@font-face {
+    font-family: "Inconsolata-g";
+    src: local("Inconsolata-g for Powerline"),
+         url(../Inconsolata-g.woff2) format('woff2');
+}
+
 .terminal {
-    font-family: "DejaVu Sans Mono", "Everson Mono", FreeMono, Menlo, Terminal, monospace, "Apple Symbols";
+    font-family: "Inconsolata-g";
 }
 
 .xterm-overlay {
